@@ -1,0 +1,50 @@
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@localhost:1521/xe
+    username: HR
+    password: HR
+    driver-class-name: oracle.jdbc.OracleDriver
+  mybatis:
+    config-location: file:src/main/resources/mapper/**/*.xml
+    configuration:
+      lazyLoadingEnabled=true
+      aggressiveLazyLoading=false
+      mapUnderscoreToCamelCase=true
+  thymeleaf:
+    cache: false
+    check-template: true
+    check-template-location: true
+    enabled: true
+    encoding: UTF-8
+    mode: HTML
+    prefix: file:src/main/resources/templates/
+    suffix: .html
+    servlet:
+      content-type: text/html
+  devtools:
+    livereload:
+      enabled: true
+    add-properties: true
+  resources:
+    static-locations: file:src/main/resources/static/
+    cache:
+      period: 0
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 5MB
+      enabled: true
+      location: ${java.io.tmpdir}
+  session:
+    store-type: none
+
+server:
+  servlet:
+    session:
+      cookie:
+        http-only: true
+  port: 8090
+#        secure: true
+
+cookie:
+  maxAge: 86400
